@@ -39,6 +39,35 @@ print_words() and print_top().
 
 import sys
 
+def print_words(filename):
+  f = open(filename,"r")
+  text = f.read()
+  words = text.split()
+  del text
+  words = map(lambda word:word.lower(),words)
+  dic = {}
+  for word in words:
+    if word in dic:dic[word]+=1
+    else:dic[word]=1
+  for word in sorted(dic.keys()):
+    print word+' '+ str(dic[word])
+
+
+def print_top(filename):
+  f = open(filename,"r")
+  text = f.read()
+  words = text.split()
+  del text
+  words = map(lambda word:word.lower(),words)
+  dic = {}
+  for word in words:
+    if word in dic:dic[word]+=1
+    else:dic[word]=1
+  def shel(a):
+    return a[1]
+  for word,count in sorted(dic.items(),key=shel,reverse=True):
+    print word+' '+str(count) 
+
 # +++your code here+++
 # Define print_words(filename) and print_top(filename) functions.
 # You could write a helper utility function that reads a file
